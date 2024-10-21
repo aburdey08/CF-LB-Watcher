@@ -1,11 +1,11 @@
 # CF-LB-Watcher
 
-CF-LB-Watcher (Cloudflare Load Balancer Watcher) is a monitoring utility that keeps track of the health of your nodes (IPv4 and IPv6) and dynamically updates DNS records via Cloudflare's API.
+CF-LB-Watcher (Cloudflare Load Balancer Watcher) is a monitoring utility that keeps track of the health of your nodes (IPv4 and IPv6) and dynamically updates DNS records for your domain via Cloudflare's API.
 
 ## How It Works
 
 - **Node Health Checks:** Periodically checks all nodes specified in NODES_V4 and NODES_V6[^1] using HTTP(S) requests.
-- **DNS Record Updates:** If a node goes down, the corresponding DNS record is removed from Cloudflare. Once the node is back up and stable, the record is re-added.
+- **DNS Record Updates:** If a node goes down, the corresponding A/AAAA record is removed from Cloudflare. Once the node is back up and stable, the record is re-added.
 - **Flapping Protection:** A flapping protection mechanism ensures that nodes that frequently change their state are not re-added to DNS too quickly.
 - **Last node protection:** The last node will not be removed from DNS even if it is unavailable. Once the first available node appears, the record for the protected but unavailable node will be removed.
 - **Prometheus Monitoring:** The utility runs a metrics server for Prometheus that provides insights into node statuses, response times, and DNS management statistics.
