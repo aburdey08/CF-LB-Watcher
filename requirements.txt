@@ -1,0 +1,4 @@
+requests
+urllib3
+prometheus_client
+python-dotenv

@@ -1,0 +1,29 @@
+services:
+  cf-lb-watcher:
+    container_name: cf-lb-watcher
+    image: aburdey/cf-lb-watcher:1.3.1
+    ports:
+      - "8080:8080"
+    environment:
+      LOGGING_LEVEL: INFO
+      CLOUDFLARE_API_TOKEN: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      CLOUDFLARE_ZONE_ID: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      CLOUDFLARE_DNS_RECORD_NAME: "lb.example.com"
+      CLOUDFLARE_DNS_TTL: "60"
+      CLOUDFLARE_ENABLE_CF_PROXY: "True"
+      CLOUDFLARE_REQUEST_TIMEOUT: "10"
+      CLOUDFLARE_VALIDATION_INTERVAL: "60"
+      NODES_V4: "X.X.X.X,Y.Y.Y.Y"
+      NODE_PROTOCOL: "https"
+      NODE_PORT: "443"
+      NODE_PATH: "/status"
+      NODE_CHECK_TIMEOUT: "1000"
+      NODE_CHECK_INTERVAL: "1"
+      FLAPPING_PROTECTION_TIME: "30"
+      PROMETHEUS_PORT: "8080"
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
