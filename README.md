@@ -1,4 +1,5 @@
 # CF-LB-Watcher
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0db7ed?logo=docker&logoColor=white)](https://hub.docker.com/r/aburdey/cf-lb-watcher)
 
 CF-LB-Watcher (Cloudflare Load Balancer Watcher) is a monitoring utility that keeps track of the health of your nodes (IPv4 and IPv6) and dynamically updates DNS records for your domain via Cloudflare's API.
 
